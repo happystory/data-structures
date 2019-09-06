@@ -92,11 +92,13 @@ class myArray {
     }
     const ret = this.data[index];
 
-    // 注：此时最末位会保留，但由于不对外暴露，故不作处理
     for (let i = index + 1; i < this.size; i++) {
       this.data[i - 1] = this.data[i];
     }
     this.size--;
+
+    // 清除末位引用
+    this.data[this.size] = undefined;
     return ret;
   }
 
